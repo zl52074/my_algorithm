@@ -18,16 +18,22 @@ public class SortAlgorithm {
      * @param array 数组
      * @return void
      * @author zl52074
-     * @time 2023/8/13 16:27
+     * @time 2023/8/14 21:15
      */
-    public static void bubbleSort(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[i]) {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
+    public static void bubbleSort(int[] array){
+        for (int i = 0; i < array.length - 1; i++) {
+            boolean flag = true;
+            for (int j = 0; j < array.length - i - 1; j++) {
+                //连续交换相邻元素，把大元素换到右边
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    flag = false;
                 }
+            }
+            if(flag){
+                break;
             }
         }
     }
@@ -40,6 +46,38 @@ public class SortAlgorithm {
         System.out.println(Arrays.toString(array));
         System.out.println(end - start+"ms");
     }
+
+    /**
+     * @description 选择排序
+     * @param array 数组
+     * @return void
+     * @author zl52074
+     * @time 2023/8/13 16:27
+     */
+    public static void selectionSort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                //遍历j，如果存在比i位元素大的元素，则i与j元素交换，i位元素替换为大元素
+                if (array[j] < array[i]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    @Test
+    public void selectionSortTest(){
+        int[] array = new int[]{5, 7, 9, 4, 3, 1, 1, 2, 8, 6};
+        long start = System.currentTimeMillis();
+        selectionSort(array);
+        long end = System.currentTimeMillis();
+        System.out.println(Arrays.toString(array));
+        System.out.println(end - start+"ms");
+    }
+
+
+
 
 
 
@@ -54,7 +92,7 @@ public class SortAlgorithm {
      */
     public static void quickSort(int[] array, int start, int end) {
         int key = array[start];
-        int flag = 0;
+        int flag = 0; //当前活动指针 0 right 1 left
         int pleft = start;
         int pright = end;
         while (pleft < pright) {
@@ -102,8 +140,10 @@ public class SortAlgorithm {
         for(int i = 0;i<len;i++){
             array[i] = randomNumber(1,len);
         }
-        int[] quickSortArray = Arrays.copyOf(array,array.length);
         int[] bubbleSortArray = Arrays.copyOf(array,array.length);
+        int[] quickSortArray = Arrays.copyOf(array,array.length);
+        int[] selectionSortArray = Arrays.copyOf(array,array.length);
+
 
         long bubbleSortStart = System.currentTimeMillis();
         bubbleSort(bubbleSortArray);
@@ -111,12 +151,17 @@ public class SortAlgorithm {
         // System.out.println(Arrays.toString(array));
         System.out.println("bubbleSort: "+(bubbleSortEnd - bubbleSortStart)+"ms");
 
+        long selectionSortStart = System.currentTimeMillis();
+        selectionSort(selectionSortArray);
+        long selectionSortEnd = System.currentTimeMillis();
+        // System.out.println(Arrays.toString(array));
+        System.out.println("selectionSort: "+(selectionSortEnd - selectionSortStart)+"ms");
+
         long quickSortStart = System.currentTimeMillis();
         quickSort(quickSortArray, 0, quickSortArray.length - 1);
         long quickSortEnd = System.currentTimeMillis();
         // System.out.println(Arrays.toString(array));
         System.out.println("quickSort: "+(quickSortEnd - quickSortStart)+"ms");
-
 
     }
 }

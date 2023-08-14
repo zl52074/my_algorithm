@@ -208,7 +208,7 @@ public class AppliedAlgorithm {
      */
     public static void huiNumber(int len) {
         int[][] array = new int[len][len];
-        int direction = 1; //方向标识
+        int direction = 1; //方向标识 1→ 2↓ 3← 4↑
         int x = 0;
         int y = 0;
         for (int i = 1; i <= len * len; i++) {
