@@ -159,6 +159,7 @@ public class SortAlgorithm {
 
         long quickSortStart = System.currentTimeMillis();
         quickSort(quickSortArray, 0, quickSortArray.length - 1);
+        // Arrays.sort(quickSortArray);
         long quickSortEnd = System.currentTimeMillis();
         // System.out.println(Arrays.toString(array));
         System.out.println("quickSort: "+(quickSortEnd - quickSortStart)+"ms");

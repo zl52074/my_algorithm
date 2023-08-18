@@ -2,6 +2,7 @@ package com.zl52074.algorithm.classic;
 
 import org.junit.Test;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 /**
@@ -39,28 +40,41 @@ public class ClassicAlgorithm {
 
     /***
      * @description 斐波那契数列
-     * 形如 0、1、1、2、3、5、8、13、21、34的数列，推导公式 F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）
-     * @param end 结束范围（数列长度）
+     * 形如 1、1、2、3、5、8、13、21、34的数列，推导公式 F(0)=0，F(1)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）
+     * @param n 数列长度
      * @return void
      * @time 2021/9/2 22:55
      */
-    public static void fibonacci(int end) {
-        long num1 = 0;
+    public static void fibonacci(int n) {
+        long num1 = 1;
         long num2 = 1;
         long sum = 0;
         System.out.print(num1 + " ");
         System.out.print(num2 + " ");
-        for (int i = 0; i < end; i++) {
+        for (int i = 2; i < n; i++) {
             sum = num1 + num2;
             num1 = num2;
             num2 = sum;
             System.out.print(sum + " ");
         }
-
     }
+    //递归实现获取第n位的值
+    public static int getFibonacciNumber(int n) {
+        if(n==1){
+            return 1;
+        }
+        if(n==2){
+            return 1;
+        }
+        return getFibonacciNumber(n-1)+getFibonacciNumber(n-2);
+    }
+
     @Test
     public void fibonacciTest(){
-        fibonacci(50);
+        fibonacci(5);
+        System.out.println();
+        System.out.println(getFibonacciNumber(5));
+
     }
 
     /**
@@ -128,6 +142,33 @@ public class ClassicAlgorithm {
     @Test
     public void yanghuiTriangleTest(){
         yanghuiTriangle();
+    }
+
+    /**
+     * @description 汉诺塔
+     * @param n 层数
+     * @return void
+     * @author zl52074
+     * @time 2023/8/17 17:57
+     */
+    public static void Hanoi(int n,char A,char B,char C){
+        if (n == 1) {
+            System.out.println(n + "号盘移动：" + A + "→" + C);
+            return;
+        }
+        Hanoi(n - 1, A, C, B);
+        System.out.println(n + "号盘移动：" + A + "→" + C);
+        Hanoi(n - 1, B, A, C);
+    }
+    @Test
+    public void HanoiTest(){
+        System.out.println();
+        Hanoi(3,'A','B','C');
+        // System.out.println();
+        // Hanoi(3,'A','B','C');
+        // System.out.println();
+        // Hanoi(4,'A','B','C');
+
     }
 
 }

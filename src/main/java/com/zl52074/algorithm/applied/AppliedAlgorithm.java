@@ -259,4 +259,39 @@ public class AppliedAlgorithm {
         }
     }
 
+    //求数组最大子序列和，时间复杂度O(n)
+
+    public static int maxSubArraySum(int[] array) {
+        //避免数组为空时后面异常
+        if(array==null||array.length==0){
+            return 0;
+        }
+        //防止最大是负数 初始假设最大子序列和是单元素array[0]
+        int maxSum = array[0];
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            //如果单元素就是最大值
+            if (array[i] > maxSum) {
+                maxSum = array[i];
+            }
+            sum += array[i];
+            //如果前i个元素相加是负数，则舍弃不与后面元素连接，和重置为0
+            if (sum < 0) {
+                sum = 0;
+            }
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
+
+        }
+        return maxSum;
+    }
+
+    @Test
+    public void maxSubArraySumTest() {
+        int[] array = {1, -2, -3, 5, -4, 1, 6, -4, -3, -2, 7};
+        System.out.println(maxSubArraySum(array));
+
+    }
+
 }
