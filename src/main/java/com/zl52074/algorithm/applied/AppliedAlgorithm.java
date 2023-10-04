@@ -258,9 +258,18 @@ public class AppliedAlgorithm {
             System.out.println(Arrays.toString(array[j]));
         }
     }
+    @Test
+    public void huiNumberTest() {
+        huiNumber(5);
+    }
 
-    //求数组最大子序列和，时间复杂度O(n)
-
+    /**
+     * @description 求数组最大子序列和，要求时间复杂度为O(n)
+     * @param array
+     * @return int
+     * @author zl52074
+     * @time 2023/8/29 17:18
+     */
     public static int maxSubArraySum(int[] array) {
         //避免数组为空时后面异常
         if(array==null||array.length==0){
@@ -293,5 +302,33 @@ public class AppliedAlgorithm {
         System.out.println(maxSubArraySum(array));
 
     }
+
+
+    /**
+     * @description 获取一个数组的全部子数组
+     * @param array
+     * @return List<char[]>
+     * @author zl52074
+     * @time 2023/8/29 17:32
+     */
+    public static List<char[]> findAllSubArray(char[] array) {
+        List<char[]> list = new ArrayList<>();
+        for (int i = 0; i <= array.length; i++) {
+            for (int x = 0, y = array.length - i; y > 0 && y <= array.length; x++, y++) {
+                list.add(Arrays.copyOfRange(array, x, y));
+            }
+        }
+        return list;
+    }
+    @Test
+    public void findSubArrayTest() {
+        String s = "abcd";
+        List<char[]> list = findAllSubArray(s.toCharArray());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(Arrays.toString(list.get(i)));
+        }
+    }
+
+
 
 }
