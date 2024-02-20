@@ -3,7 +3,8 @@ package com.zl52074.algorithm.classic;
 import org.junit.Test;
 
 import java.util.Arrays;
-import static com.zl52074.util.NumberUtil.randomNumber;
+
+import static com.zl52074.util.NumberUtils.randomNumber;
 
 /**
  * @description: 经典排序算法

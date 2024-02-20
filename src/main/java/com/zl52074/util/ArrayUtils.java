@@ -5,7 +5,7 @@ package com.zl52074.util;
  * @author: zl52074
  * @time: 2023/8/13 17:25
  */
-public class ArrayUtil {
+public class ArrayUtils {
     /**
      * @description 反转数组
      * 将一个数组头尾反转 如[1,2,3]反转之后为[3,2,1]

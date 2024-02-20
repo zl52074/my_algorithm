@@ -80,6 +80,10 @@ public class AppliedAlgorithm {
      * @time 2021/9/2 21:58
      */
     public static boolean isPalindrome(String str) {
+        if("".equals(str)){
+            return true;
+        }
+        //String newStr = str.replaceAll("[^a-zA-Z]", "").toLowerCase();
         char[] chars = str.toCharArray();
         boolean flag = true;
         //数组折半，对称比较值是否一致
@@ -328,7 +332,6 @@ public class AppliedAlgorithm {
             System.out.println(Arrays.toString(list.get(i)));
         }
     }
-
 
 
 }
