@@ -3,13 +3,15 @@ package com.zl52074.datastructures.linkedlist;
 
 /**
  * @description:
+ * 头插法 逆序
+ * 尾插法 顺序
  * @author: zl52074
  * @time: 2024/2/21 16:17
  */
-public class LinkedList {
+public class SinglyLinkedList {
     private Node head = new Node();
 
-    public static class Node {
+    class Node {
         private int value;
         private Node next;
 
@@ -71,6 +73,10 @@ public class LinkedList {
         }
     }
 
+    /**
+     * 获取有效节点数量
+     * @return
+     */
     public int size() {
         int size = 0;
         if (head.hasNext()) {
@@ -118,7 +124,7 @@ public class LinkedList {
 
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        SinglyLinkedList list = new SinglyLinkedList();
         // list.add(1);
         // list.add(2);
         // list.add(3);

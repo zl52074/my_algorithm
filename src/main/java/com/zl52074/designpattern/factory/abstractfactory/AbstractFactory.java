@@ -1,4 +1,4 @@
-package com.zl52074.designpattern.factory.abstract_factory;
+package com.zl52074.designpattern.factory.abstractfactory;
 
 import com.zl52074.designpattern.factory.keyboard.Keyboard;
 import com.zl52074.designpattern.factory.monitor.Monitor;

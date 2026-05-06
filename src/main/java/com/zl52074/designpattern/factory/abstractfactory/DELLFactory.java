@@ -1,8 +1,8 @@
-package com.zl52074.designpattern.factory.abstract_factory;
+package com.zl52074.designpattern.factory.abstractfactory;
 
-import com.zl52074.designpattern.factory.keyboard.HPKeyboard;
+import com.zl52074.designpattern.factory.keyboard.DELLKeyboard;
 import com.zl52074.designpattern.factory.keyboard.Keyboard;
-import com.zl52074.designpattern.factory.monitor.HPMonitor;
+import com.zl52074.designpattern.factory.monitor.DELLMonitor;
 import com.zl52074.designpattern.factory.monitor.Monitor;
 
 /**
@@ -10,14 +10,14 @@ import com.zl52074.designpattern.factory.monitor.Monitor;
  * @author: zl52074
  * @time: 2023/12/3 1:36
  */
-public class HPFactory implements AbstractFactory{
+public class DELLFactory implements AbstractFactory{
     @Override
     public Keyboard getKeyboardInstance() {
-        return new HPKeyboard();
+        return new DELLKeyboard();
     }
 
     @Override
     public Monitor getMonitorInstance() {
-        return new HPMonitor();
+        return new DELLMonitor();
     }
 }
